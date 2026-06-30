@@ -1,0 +1,478 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>CosechaClima - Prototipo</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <svg aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden">
+    <symbol id="i-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></symbol>
+    <symbol id="i-arrow-left" viewBox="0 0 24 24"><path d="M19 12H5"/><path d="m11 18-6-6 6-6"/></symbol>
+    <symbol id="i-bell" viewBox="0 0 24 24"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></symbol>
+    <symbol id="i-map-pin" viewBox="0 0 24 24"><path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="3"/></symbol>
+    <symbol id="i-leaf" viewBox="0 0 24 24"><path d="M11 20A7 7 0 0 1 4 13c0-6 8-9 16-9 0 8-3 16-9 16Z"/><path d="M4 13c4 0 7-1 10-4"/></symbol>
+    <symbol id="i-cloud" viewBox="0 0 24 24"><path d="M17.5 19H8a5 5 0 1 1 1-9.9 7 7 0 0 1 13 3.9 3.5 3.5 0 0 1-4.5 6Z"/></symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></symbol>
+    <symbol id="i-message" viewBox="0 0 24 24"><path d="M21 15a4 4 0 0 1-4 4H8l-5 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4Z"/><path d="M8 9h8"/><path d="M8 13h5"/></symbol>
+    <symbol id="i-calendar" viewBox="0 0 24 24"><path d="M8 2v4"/><path d="M16 2v4"/><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M3 10h18"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m20 6-11 11-5-5"/></symbol>
+    <symbol id="i-alert" viewBox="0 0 24 24"><path d="m12 3 10 18H2Z"/><path d="M12 9v4"/><path d="M12 17h.01"/></symbol>
+    <symbol id="i-home" viewBox="0 0 24 24"><path d="m3 11 9-8 9 8"/><path d="M5 10v11h14V10"/><path d="M9 21v-7h6v7"/></symbol>
+    <symbol id="i-list" viewBox="0 0 24 24"><path d="M8 6h13"/><path d="M8 12h13"/><path d="M8 18h13"/><path d="M3 6h.01"/><path d="M3 12h.01"/><path d="M3 18h.01"/></symbol>
+    <symbol id="i-book" viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M4 4.5A2.5 2.5 0 0 1 6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5Z"/></symbol>
+    <symbol id="i-settings" viewBox="0 0 24 24"><path d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06A1.65 1.65 0 0 0 15 19.4a1.65 1.65 0 0 0-1 .6 1.65 1.65 0 0 0-.38 1V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 8 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.6 15a1.65 1.65 0 0 0-.6-1 1.65 1.65 0 0 0-1-.38H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 8a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.6a1.65 1.65 0 0 0 1-.6 1.65 1.65 0 0 0 .38-1V3a2 2 0 1 1 4 0v.09A1.65 1.65 0 0 0 16 4.6a1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9c.39.24.72.57 1 1 .28.42.43.91.43 1.42V12a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.34 1Z"/></symbol>
+    <symbol id="i-droplet" viewBox="0 0 24 24"><path d="M12 2.7 6.3 9.1a8 8 0 1 0 11.4 0Z"/></symbol>
+    <symbol id="i-wind" viewBox="0 0 24 24"><path d="M3 8h12a3 3 0 1 0-3-3"/><path d="M4 13h16a3 3 0 1 1-3 3"/><path d="M2 18h9"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/></symbol>
+    <symbol id="i-sliders" viewBox="0 0 24 24"><path d="M4 21v-7"/><path d="M4 10V3"/><path d="M12 21v-9"/><path d="M12 8V3"/><path d="M20 21v-5"/><path d="M20 12V3"/><path d="M2 14h4"/><path d="M10 8h4"/><path d="M18 16h4"/></symbol>
+  </svg>
+
+  <main id="app-shell" aria-live="polite">
+    <section id="splash" class="screen full splash active" data-screen>
+      <div>
+        <div class="splash-mark" aria-hidden="true">
+          <svg class="shield" viewBox="0 0 200 200" fill="none">
+            <path d="M100 16 162 40v52c0 47-30 78-62 94-32-16-62-47-62-94V40l62-24Z" stroke="currentColor" stroke-width="8"/>
+            <path d="M74 110c14-2 24-9 31-23 8 14 19 21 35 23" stroke="currentColor" stroke-width="8" stroke-linecap="round"/>
+            <path d="M94 124c-12-1-20 4-25 14 18 2 29-2 34-14" fill="currentColor" opacity=".75"/>
+            <path d="M118 124c12-1 20 4 25 14-18 2-29-2-34-14" fill="currentColor" opacity=".75"/>
+            <path d="M82 146h36" stroke="currentColor" stroke-width="8" stroke-linecap="round"/>
+            <path d="M100 82v70" stroke="currentColor" stroke-width="8" stroke-linecap="round"/>
+            <path d="M70 70h60" stroke="currentColor" stroke-width="8" stroke-linecap="round"/>
+            <path d="M82 58h36" stroke="currentColor" stroke-width="8" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h1 class="serif">CosechaClima</h1>
+        <p>Tu sem&aacute;foro de decisiones clim&aacute;ticas para el campo.</p>
+      </div>
+      <div class="splash-footer">
+        <div class="location-pill"><svg class="icon sm"><use href="#i-map-pin"></use></svg>Carazo, Nicaragua</div>
+        <button class="btn light" type="button" data-go="tutorial-1">Comenzar <svg class="icon"><use href="#i-arrow-right"></use></svg></button>
+        <p class="version">Version 5.1 - Ciclo agricola 2026</p>
+      </div>
+    </section>
+
+    <section id="tutorial-1" class="screen" data-screen>
+      <div class="topbar">
+        <button class="icon-btn" type="button" data-go="splash" aria-label="Volver"><svg class="icon"><use href="#i-arrow-left"></use></svg></button>
+        <span class="center">1 de 3</span>
+        <button class="link-btn" type="button" data-go="login">Saltar</button>
+      </div>
+      <div class="progress" aria-hidden="true"><span class="dot active"></span><span class="dot"></span><span class="dot"></span></div>
+      <div class="tutorial-visual">
+        <div class="phone-card semaforo">
+          <span class="signal-dot red"><svg class="icon lg"><use href="#i-alert"></use></svg></span>
+          <span class="signal-dot amber"><svg class="icon lg"><use href="#i-alert"></use></svg></span>
+          <span class="signal-dot green"><svg class="icon lg"><use href="#i-check"></use></svg></span>
+        </div>
+      </div>
+      <h1 class="serif">Tu sem&aacute;foro del d&iacute;a</h1>
+      <p>Analizamos clima, cultivo, etapa, suelo y tus umbrales para decirte si hoy hay riesgo bajo, medio o alto.</p>
+      <button class="btn" type="button" data-go="tutorial-2">Siguiente <svg class="icon"><use href="#i-arrow-right"></use></svg></button>
+      <button class="btn ghost" type="button" data-go="login">Omitir tutorial</button>
+    </section>
+
+    <section id="tutorial-2" class="screen" data-screen>
+      <div class="topbar">
+        <button class="icon-btn" type="button" data-go="tutorial-1" aria-label="Volver"><svg class="icon"><use href="#i-arrow-left"></use></svg></button>
+        <span class="center">2 de 3</span>
+        <button class="link-btn" type="button" data-go="login">Saltar</button>
+      </div>
+      <div class="progress" aria-hidden="true"><span class="dot"></span><span class="dot active"></span><span class="dot"></span></div>
+      <div class="tutorial-visual">
+        <div class="crop-phone">
+          <div class="stack" style="width:150px">
+            <span class="avatar large"><svg class="icon xl"><use href="#i-list"></use></svg></span>
+            <div class="action-preview"><span class="line"></span><span class="line"></span><span class="line"></span></div>
+          </div>
+        </div>
+      </div>
+      <h1 class="serif">3 acciones para hoy</h1>
+      <p>No teor&iacute;a, no videos largos. Cada alerta te dice exactamente tres cosas que pod&eacute;s hacer en tu parcela.</p>
+      <button class="btn" type="button" data-go="tutorial-3">Siguiente <svg class="icon"><use href="#i-arrow-right"></use></svg></button>
+      <button class="btn ghost" type="button" data-go="login">Omitir tutorial</button>
+    </section>
+
+    <section id="tutorial-3" class="screen" data-screen>
+      <div class="topbar">
+        <button class="icon-btn" type="button" data-go="tutorial-2" aria-label="Volver"><svg class="icon"><use href="#i-arrow-left"></use></svg></button>
+        <span class="center">3 de 3</span>
+        <button class="link-btn" type="button" data-go="login">Saltar</button>
+      </div>
+      <div class="progress" aria-hidden="true"><span class="dot"></span><span class="dot"></span><span class="dot active"></span></div>
+      <div class="tutorial-visual">
+        <div class="crop-phone">
+          <div class="message-bubble"><svg class="icon xl"><use href="#i-message"></use></svg></div>
+        </div>
+      </div>
+      <h1 class="serif">Alertas hasta sin internet</h1>
+      <p>Si hay alerta amarilla o roja, abrimos tu app de mensajes con el SMS listo para enviar a contactos de confianza.</p>
+      <button class="btn" type="button" data-go="login">&iexcl;Comenzar!</button>
+    </section>
+
+    <section id="login" class="screen" data-screen>
+      <div class="brandbar">
+        <span></span>
+        <div class="row brand-id"><span class="avatar"><svg class="icon"><use href="#i-leaf"></use></svg></span><h2 class="serif" style="margin:0">CosechaClima</h2></div>
+        <button class="icon-btn" type="button" aria-label="Notificaciones"><svg class="icon"><use href="#i-bell"></use></svg></button>
+      </div>
+      <div class="stack lg" style="padding-top:46px">
+        <span class="avatar large" style="margin:auto"><svg class="icon xl"><use href="#i-message"></use></svg></span>
+        <div>
+          <h1 class="serif" style="text-align:center">Ingresa tu n&uacute;mero</h1>
+          <p class="muted" style="text-align:center">Te enviaremos un c&oacute;digo de verificaci&oacute;n para activar tu parcela clim&aacute;tica.</p>
+        </div>
+        <label class="field">
+          <span class="label">Numero de telefono</span>
+          <input class="input" inputmode="tel" value="+505 8234-5678" aria-label="Numero de telefono">
+        </label>
+        <div class="card mint flat">
+          <div class="row" style="gap:12px">
+            <span class="avatar"><svg class="icon"><use href="#i-message"></use></svg></span>
+            <p style="margin:0">Recibir&aacute;s un SMS con c&oacute;digo de 4 n&uacute;meros. Puede aplicar cargo de tu operadora.</p>
+          </div>
+        </div>
+        <button class="btn" type="button" data-go="otp">Enviar c&oacute;digo SMS <svg class="icon"><use href="#i-arrow-right"></use></svg></button>
+      </div>
+    </section>
+
+    <section id="otp" class="screen" data-screen>
+      <div class="topbar">
+        <button class="icon-btn" type="button" data-go="login" aria-label="Volver"><svg class="icon"><use href="#i-arrow-left"></use></svg></button>
+        <span></span>
+        <span></span>
+      </div>
+      <div class="stack lg" style="padding-top:40px">
+        <span class="avatar large" style="margin:auto"><svg class="icon xl"><use href="#i-phone"></use></svg></span>
+        <div>
+          <h1 class="serif">Revis&aacute; tus mensajes</h1>
+          <p class="muted">Hemos enviado un c&oacute;digo de seguridad de 4 d&iacute;gitos al n&uacute;mero <span class="strong-green">+505 8234-5678</span>.</p>
+        </div>
+        <div class="pin-row" aria-label="Codigo de verificacion">
+          <span class="pin-box">4</span>
+          <span class="pin-box active"></span>
+          <span class="pin-box"></span>
+          <span class="pin-box"></span>
+        </div>
+        <div class="card flat" style="text-align:center">
+          <p class="small-note" style="margin-bottom:8px">&iquest;No recibiste el c&oacute;digo?</p>
+          <button class="link-btn" type="button">Reenviar c&oacute;digo</button>
+        </div>
+        <button class="btn" type="button" data-go="crop">Confirmar <svg class="icon"><use href="#i-check"></use></svg></button>
+        <p class="small-note" style="text-align:center">Al confirmar, valid&aacute;s tu identidad para acceder a la red de monitoreo clim&aacute;tico.</p>
+      </div>
+    </section>
+
+    <section id="crop" class="screen" data-screen>
+      <div class="brandbar">
+        <button class="icon-btn" type="button" data-go="otp" aria-label="Volver"><svg class="icon"><use href="#i-arrow-left"></use></svg></button>
+        <h2 class="serif" style="margin:0">CosechaClima</h2>
+        <span class="avatar" style="background:#eee6de"></span>
+      </div>
+      <p class="eyebrow">Registro de cultivo <span style="float:right;color:var(--green)">1 de 4</span></p>
+      <div class="progress" aria-hidden="true"><span class="dot active"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+      <div class="stack lg" style="margin-top:24px">
+        <div>
+          <h1 class="serif">&iquest;Qu&eacute; sembraste?</h1>
+          <p class="muted">Seleccion&aacute; el cultivo principal para recibir alertas seg&uacute;n sus necesidades h&iacute;dricas.</p>
+        </div>
+        <div class="choice-grid">
+          <button class="choice selected" type="button" data-select="crop" aria-pressed="true">
+            <span class="avatar"><svg class="icon lg"><use href="#i-leaf"></use></svg></span>
+            <strong>Ma&iacute;z</strong>
+            <span>Zea mays</span>
+          </button>
+          <button class="choice" type="button" data-select="crop" aria-pressed="false">
+            <span class="avatar soil"><svg class="icon lg"><use href="#i-leaf"></use></svg></span>
+            <strong>Frijol</strong>
+            <span>Phaseolus</span>
+          </button>
+        </div>
+        <div class="card flat">
+          <div class="row" style="gap:12px">
+            <span class="pill warn"><svg class="icon sm"><use href="#i-alert"></use></svg></span>
+            <p style="margin:0">El ma&iacute;z y el frijol tienen umbrales diferentes para sequ&iacute;a, lluvia y viento.</p>
+          </div>
+        </div>
+        <button class="btn" type="button" data-go="location">Continuar <svg class="icon"><use href="#i-arrow-right"></use></svg></button>
+      </div>
+    </section>
+
+    <section id="location" class="screen" data-screen>
+      <div class="topbar">
+        <button class="icon-btn" type="button" data-go="crop" aria-label="Volver"><svg class="icon"><use href="#i-arrow-left"></use></svg></button>
+        <h2 class="serif" style="margin:0">CosechaClima</h2>
+        <span></span>
+      </div>
+      <p class="eyebrow">Registro <span style="float:right;color:var(--green)">2 de 4</span></p>
+      <div class="progress" aria-hidden="true"><span class="dot"></span><span class="dot active"></span><span class="dot"></span><span class="dot"></span></div>
+      <div class="stack lg" style="margin-top:24px">
+        <div>
+          <h1 class="serif">Ubicaci&oacute;n de parcela</h1>
+          <p class="muted">El municipio permite usar clima hiperlocal de NASA POWER y confirmar alertas para Carazo.</p>
+        </div>
+        <div class="card mint">
+          <div class="split">
+            <div class="row" style="gap:12px">
+              <span class="avatar"><svg class="icon"><use href="#i-map-pin"></use></svg></span>
+              <div><strong>GPS detectado</strong><p class="muted" style="margin:2px 0 0">Carazo, Nicaragua</p></div>
+            </div>
+            <svg class="icon" style="color:var(--green)"><use href="#i-check"></use></svg>
+          </div>
+        </div>
+        <div>
+          <p class="eyebrow">Selecciona tu Municipio <span style="float:right;color:var(--green)">Carazo</span></p>
+          <div class="choice-grid">
+            <button class="choice municipio" type="button" data-select="municipio"><span class="avatar"><svg class="icon"><use href="#i-home"></use></svg></span><strong style="font-size:17px">Diriamba</strong><span>Cuna del Gueguense</span></button>
+            <button class="choice municipio selected" type="button" data-select="municipio" aria-pressed="true"><span class="avatar"><svg class="icon"><use href="#i-map-pin"></use></svg></span><strong style="font-size:17px">Jinotepe</strong><span>Cabecera Departamental</span></button>
+            <button class="choice municipio" type="button" data-select="municipio"><span class="avatar"><svg class="icon"><use href="#i-leaf"></use></svg></span><strong style="font-size:17px">San Marcos</strong><span>Coraz&oacute;n de la Meseta</span></button>
+            <button class="choice municipio" type="button" data-select="municipio"><span class="avatar"><svg class="icon"><use href="#i-settings"></use></svg></span><strong style="font-size:17px">Dolores</strong><span>Zona productiva</span></button>
+          </div>
+        </div>
+        <button class="btn" type="button" data-go="date">Confirmar ubicaci&oacute;n <svg class="icon"><use href="#i-arrow-right"></use></svg></button>
+      </div>
+    </section>
+
+    <section id="date" class="screen" data-screen>
+      <div class="topbar">
+        <button class="icon-btn" type="button" data-go="location" aria-label="Volver"><svg class="icon"><use href="#i-arrow-left"></use></svg></button>
+        <span class="center">Paso 3 de 4</span>
+        <span></span>
+      </div>
+      <div class="progress" aria-hidden="true"><span class="dot"></span><span class="dot"></span><span class="dot active"></span><span class="dot"></span></div>
+      <div class="stack lg" style="margin-top:30px">
+        <div>
+          <h1 class="serif">&iquest;Cu&aacute;ndo sembraste?</h1>
+          <p class="muted">Con esta fecha calculamos autom&aacute;ticamente la etapa: germinaci&oacute;n, crecimiento, floraci&oacute;n o llenado de grano.</p>
+        </div>
+        <button class="choice full selected" type="button" data-select="date">
+          <span class="avatar"><svg class="icon"><use href="#i-leaf"></use></svg></span>
+          <span><strong>Esta semana</strong><span>Reci&eacute;n comenzando</span></span>
+          <span class="pill">Germinaci&oacute;n</span>
+        </button>
+        <button class="choice full" type="button" data-select="date">
+          <span class="avatar"><svg class="icon"><use href="#i-leaf"></use></svg></span>
+          <span><strong>Hace 2-3 semanas</strong><span>Crecimiento temprano</span></span>
+          <span class="pill">Crecimiento</span>
+        </button>
+        <button class="choice full" type="button" data-select="date">
+          <span class="avatar"><svg class="icon"><use href="#i-leaf"></use></svg></span>
+          <span><strong>Hace m&aacute;s de un mes</strong><span>Etapa de maduraci&oacute;n</span></span>
+          <span class="pill warn">Floraci&oacute;n</span>
+        </button>
+        <label class="field">
+          <span class="label">O selecciona una fecha exacta</span>
+          <input class="input" type="date" value="2026-06-10">
+        </label>
+        <button class="btn" type="button" data-go="soil">Siguiente paso <svg class="icon"><use href="#i-arrow-right"></use></svg></button>
+      </div>
+    </section>
+
+    <section id="soil" class="screen" data-screen>
+      <div class="topbar">
+        <button class="icon-btn" type="button" data-go="date" aria-label="Volver"><svg class="icon"><use href="#i-arrow-left"></use></svg></button>
+        <span class="center">Paso 4 de 4</span>
+        <span></span>
+      </div>
+      <div class="progress" aria-hidden="true"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot active"></span></div>
+      <div class="stack lg" style="margin-top:26px">
+        <div>
+          <h1 class="serif">&iquest;Qu&eacute; tipo de suelo ten&eacute;s?</h1>
+          <p class="muted">El suelo cambia el riesgo: el arcilloso se encharca, el arenoso se seca r&aacute;pido y el franco responde mejor.</p>
+        </div>
+        <div class="choice-grid">
+          <button class="choice selected" type="button" data-select="soil" aria-pressed="true"><span class="avatar soil"><svg class="icon"><use href="#i-droplet"></use></svg></span><strong>Franco</strong><span>Equilibrado</span></button>
+          <button class="choice" type="button" data-select="soil"><span class="avatar soil"><svg class="icon"><use href="#i-droplet"></use></svg></span><strong>Arcilloso</strong><span>Retiene agua</span></button>
+          <button class="choice" type="button" data-select="soil"><span class="avatar soil"><svg class="icon"><use href="#i-wind"></use></svg></span><strong>Arenoso</strong><span>Drena r&aacute;pido</span></button>
+          <button class="choice" type="button" data-select="soil"><span class="avatar"><svg class="icon"><use href="#i-message"></use></svg></span><strong>No s&eacute;</strong><span>Usar ayuda t&eacute;cnica</span></button>
+        </div>
+        <div class="card warning flat">
+          <strong>Recomendaci&oacute;n del informe V5.1</strong>
+          <p style="margin:8px 0 0">El tipo de suelo es parte del motor de 90 reglas: evento clim&aacute;tico, cultivo, etapa y suelo.</p>
+        </div>
+        <button class="btn" type="button" data-go="thresholds">Configurar alertas <svg class="icon"><use href="#i-arrow-right"></use></svg></button>
+      </div>
+    </section>
+
+    <section id="thresholds" class="screen" data-screen>
+      <div class="topbar">
+        <button class="icon-btn" type="button" data-go="soil" aria-label="Volver"><svg class="icon"><use href="#i-arrow-left"></use></svg></button>
+        <span class="center">Umbrales</span>
+        <span></span>
+      </div>
+      <div class="stack lg">
+        <div>
+          <p class="eyebrow">Configuracion personal</p>
+          <h1 class="serif">Ajust&aacute; tus alertas</h1>
+          <p class="muted">Pod&eacute;s dejar los valores recomendados o adaptarlos a tu experiencia en la parcela.</p>
+        </div>
+        <div class="slider-card">
+          <div class="slider-top"><span>Lluvia intensa</span><output data-output="rain">100 mm/24h</output></div>
+          <input type="range" min="50" max="150" value="100" step="10" data-range="rain" data-unit=" mm/24h">
+        </div>
+        <div class="slider-card">
+          <div class="slider-top"><span>Viento fuerte</span><output data-output="wind">40 km/h</output></div>
+          <input type="range" min="20" max="60" value="40" step="5" data-range="wind" data-unit=" km/h">
+        </div>
+        <div class="slider-card">
+          <div class="slider-top"><span>Can&iacute;cula</span><output data-output="dry">7 dias</output></div>
+          <input type="range" min="5" max="15" value="7" step="1" data-range="dry" data-unit=" dias">
+        </div>
+        <label class="field">
+          <span class="label">Variedad del cultivo</span>
+          <select aria-label="Variedad del cultivo">
+            <option>Criollo tradicional</option>
+            <option>Hibrido</option>
+            <option>Mejorado</option>
+          </select>
+        </label>
+        <div class="toggle-card" data-toggle>
+          <div><strong>Disponibilidad de riego</strong><p class="muted" style="margin:2px 0 0">Modifica las acciones ante sequ&iacute;a.</p></div>
+          <span class="switch" aria-hidden="true"></span>
+        </div>
+        <label class="field">
+          <span class="label">Horario de alertas SMS</span>
+          <select aria-label="Horario de alertas SMS">
+            <option>6:00 AM</option>
+            <option>5:00 AM</option>
+            <option>7:00 AM</option>
+            <option>8:00 AM</option>
+          </select>
+        </label>
+        <button class="btn" type="button" data-go="dashboard">&iexcl;Ver mi sem&aacute;foro! <svg class="icon"><use href="#i-list"></use></svg></button>
+      </div>
+    </section>
+
+    <section id="dashboard" class="screen dashboard" data-screen>
+      <div class="brandbar">
+        <div class="row brand-id">
+          <span class="avatar"><svg class="icon"><use href="#i-leaf"></use></svg></span>
+          <div><p class="eyebrow" style="margin:0">Buenos d&iacute;as,</p><h2 class="serif" style="margin:0">Carlos</h2></div>
+        </div>
+        <button class="icon-btn soft" type="button" data-go="thresholds" aria-label="Ajustes"><svg class="icon"><use href="#i-settings"></use></svg></button>
+      </div>
+
+      <div id="tab-home" class="tab-panel active">
+        <article class="card summary-card">
+          <div class="split">
+            <span class="pill dark"><svg class="icon sm"><use href="#i-map-pin"></use></svg> Jinotepe, Carazo</span>
+            <span class="pill red">Nivel 3: critico</span>
+          </div>
+          <div class="weather-main">
+            <div><span class="temp">24</span><span style="font-size:20px;font-weight:800">&deg;C</span><h3 class="serif" style="margin:0">Parcialmente nublado</h3></div>
+            <svg class="icon xl"><use href="#i-cloud"></use></svg>
+          </div>
+          <div class="metric-row">
+            <div class="metric"><span>Humedad</span><strong>82%</strong></div>
+            <div class="metric"><span>Viento</span><strong>28 km/h</strong></div>
+            <div class="metric"><span>Lluvia</span><strong>86 mm</strong></div>
+          </div>
+        </article>
+
+        <article class="risk-card red">
+          <div class="risk-head">
+            <div>
+              <span class="pill red">Alerta activa</span>
+              <h2 class="serif" style="margin:10px 0 4px">Riesgo de paleo en frijol</h2>
+              <p style="margin:0">Lluvia acumulada en 48h + suelo arcilloso + etapa de desarrollo.</p>
+            </div>
+            <span class="risk-badge"><svg class="icon lg"><use href="#i-alert"></use></svg></span>
+          </div>
+        </article>
+
+        <div class="split">
+          <h2 class="serif" style="margin:0">Tus 3 acciones de hoy</h2>
+          <button class="link-btn" type="button" data-tab="alerts">Ver alerta</button>
+        </div>
+        <div class="actions">
+          <article class="action">
+            <span class="num">1</span>
+            <div><strong>Revis&aacute; drenajes del sector norte</strong><p class="muted" style="margin:4px 0 0">Abr&iacute; salida de agua antes de las 10:00 AM.</p></div>
+            <button class="check" type="button" data-complete aria-label="Completar accion"><svg class="icon sm"><use href="#i-check"></use></svg></button>
+          </article>
+          <article class="action">
+            <span class="num">2</span>
+            <div><strong>Aplic&aacute; fungicida preventivo</strong><p class="muted" style="margin:4px 0 0">Prioridad alta contra antracnosis (paleo).</p></div>
+            <button class="check" type="button" data-complete aria-label="Completar accion"><svg class="icon sm"><use href="#i-check"></use></svg></button>
+          </article>
+          <article class="action done">
+            <span class="num">3</span>
+            <div><strong>No regu&eacute;s hoy</strong><p class="muted" style="margin:4px 0 0">La humedad supera el umbral configurado.</p></div>
+            <button class="check" type="button" data-complete aria-label="Completar accion"><svg class="icon sm"><use href="#i-check"></use></svg></button>
+          </article>
+        </div>
+
+        <div class="source-grid">
+          <div class="source"><span class="pill"><svg class="icon sm"><use href="#i-cloud"></use></svg> NASA POWER</span><p class="small-note" style="margin:0">Precipitaci&oacute;n, viento, humedad y temperatura.</p></div>
+          <div class="source"><span class="pill"><svg class="icon sm"><use href="#i-book"></use></svg> INTA</span><p class="small-note" style="margin:0">Acciones basadas en fichas t&eacute;cnicas de ma&iacute;z y frijol.</p></div>
+        </div>
+      </div>
+
+      <div id="tab-alerts" class="tab-panel">
+        <div class="split">
+          <h1 class="serif" style="margin:0">Protocolo de emergencia</h1>
+          <span class="pill red">Roja</span>
+        </div>
+        <article class="card danger">
+          <div class="row" style="gap:14px">
+            <span class="risk-badge"><svg class="icon"><use href="#i-alert"></use></svg></span>
+            <div><h3>Tormenta fuerte + humedad alta</h3><p style="margin:0">Riesgo de hongos en frijol. Enviar alerta a contactos de confianza.</p></div>
+          </div>
+        </article>
+        <div class="actions">
+          <article class="action"><span class="num">1</span><div><strong>Cierre de zanjas y drenajes</strong><p class="muted" style="margin:4px 0 0">Evite agua estancada junto al cultivo.</p></div><span></span></article>
+          <article class="action"><span class="num">2</span><div><strong>Revisi&oacute;n de hojas bajas</strong><p class="muted" style="margin:4px 0 0">Busque manchas oscuras o tallos blandos.</p></div><span></span></article>
+          <article class="action"><span class="num">3</span><div><strong>Aplicaci&oacute;n antes de lluvia</strong><p class="muted" style="margin:4px 0 0">Use producto recomendado por t&eacute;cnico local.</p></div><span></span></article>
+        </div>
+        <a class="btn red" href="sms:?body=ALERTA%20CosechaClima%3A%20riesgo%20alto%20de%20paleo%20en%20frijol.%201%29%20Revise%20drenajes.%202%29%20Aplique%20fungicida%20preventivo.%203%29%20No%20riegue%20hoy.">
+          Preparar SMS <svg class="icon"><use href="#i-message"></use></svg>
+        </a>
+        <article class="card mint flat">
+          <strong>Modo offline</strong>
+          <p style="margin:8px 0 0">La alerta usa datos cacheados y el SMS nativo del tel&eacute;fono. No requiere pasarela de pago.</p>
+        </article>
+      </div>
+
+      <div id="tab-log" class="tab-panel">
+        <div class="split">
+          <h1 class="serif" style="margin:0">Bit&aacute;cora de campo</h1>
+          <span class="pill"><svg class="icon sm"><use href="#i-list"></use></svg>Filtrar</span>
+        </div>
+        <div class="timeline">
+          <article class="timeline-item red">
+            <span class="pill red">Riesgo alto</span>
+            <h3>Alerta de paleo/antracnosis</h3>
+            <p class="muted" style="margin:0">12 Jun, 8:30 AM - Frijol, suelo arcilloso. 2 de 3 acciones completadas.</p>
+          </article>
+          <article class="timeline-item amber">
+            <span class="pill warn">Advertencia</span>
+            <h3>Can&iacute;cula moderada</h3>
+            <p class="muted" style="margin:0">8 Jun, 6:00 AM - Se recomend&oacute; riego temprano y cobertura de suelo.</p>
+          </article>
+          <article class="timeline-item">
+            <span class="pill">Estable</span>
+            <h3>Cosecha de muestra exitosa</h3>
+            <p class="muted" style="margin:0">2 Jun, 9:00 AM - Condiciones dentro de umbral configurado.</p>
+          </article>
+        </div>
+        <article class="card warning flat">
+          <strong>Reporte comunitario - Fase 2</strong>
+          <p style="margin:8px 0 0">Mockup para notificar plagas o anomal&iacute;as con municipio, s&iacute;ntomas y georreferenciaci&oacute;n.</p>
+        </article>
+        <button class="btn secondary" type="button"><svg class="icon"><use href="#i-book"></use></svg> Compartir historial</button>
+      </div>
+
+      <nav class="bottom-nav" aria-label="Navegacion principal">
+        <button class="nav-item active" type="button" data-tab="home"><svg class="icon"><use href="#i-home"></use></svg>Inicio</button>
+        <button class="nav-item" type="button" data-tab="alerts"><svg class="icon"><use href="#i-alert"></use></svg>Alertas</button>
+        <button class="nav-item" type="button" data-tab="log"><svg class="icon"><use href="#i-calendar"></use></svg>Bit&aacute;cora</button>
+      </nav>
+    </section>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
+
