@@ -1,5 +1,6 @@
-const screens = Array.from(document.querySelectorAll("[data-screen]"));
+    const screens = Array.from(document.querySelectorAll("[data-screen]"));
     const shell = document.querySelector("#app-shell");
+    let userName = '';
 
     function showScreen(id) {
       screens.forEach((screen) => {
@@ -24,6 +25,19 @@ const screens = Array.from(document.querySelectorAll("[data-screen]"));
     document.addEventListener("click", (event) => {
       const go = event.target.closest("[data-go]");
       if (go) {
+        if (go.dataset.go === "confirm-pin") {
+          const pinSection = document.querySelector("#create-pin");
+          if (pinSection && pinSection.classList.contains("active")) {
+            const nameInput = pinSection.querySelector('input[aria-label="Tu nombre"]');
+            userName = nameInput ? nameInput.value.trim() || 'Agricultor' : 'Agricultor';
+            const dashName = document.querySelector('#user-name-display');
+            if (dashName) dashName.textContent = userName;
+          }
+        }
+        if (go.dataset.go === "dashboard" || go.dataset.go === "confirm-pin") {
+          const dashName = document.querySelector('#user-name-display');
+          if (dashName && userName) dashName.textContent = userName;
+        }
         showScreen(go.dataset.go);
         return;
       }

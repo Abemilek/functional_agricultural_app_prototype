@@ -59,7 +59,7 @@
       <div class="topbar">
         <button class="icon-btn" type="button" data-go="splash" aria-label="Volver"><svg class="icon"><use href="#i-arrow-left"></use></svg></button>
         <span class="center">1 de 3</span>
-        <button class="link-btn" type="button" data-go="login">Saltar</button>
+        <span></span>
       </div>
       <div class="progress" aria-hidden="true"><span class="dot active"></span><span class="dot"></span><span class="dot"></span></div>
       <div class="tutorial-visual">
@@ -72,14 +72,14 @@
       <h1 class="serif">Tu sem&aacute;foro del d&iacute;a</h1>
       <p>Analizamos clima, cultivo, etapa, suelo y tus umbrales para decirte si hoy hay riesgo bajo, medio o alto.</p>
       <button class="btn" type="button" data-go="tutorial-2">Siguiente <svg class="icon"><use href="#i-arrow-right"></use></svg></button>
-      <button class="btn ghost" type="button" data-go="login">Omitir tutorial</button>
+      <button class="btn ghost" type="button" data-go="create-pin">Omitir tutorial</button>
     </section>
 
     <section id="tutorial-2" class="screen" data-screen>
       <div class="topbar">
         <button class="icon-btn" type="button" data-go="tutorial-1" aria-label="Volver"><svg class="icon"><use href="#i-arrow-left"></use></svg></button>
         <span class="center">2 de 3</span>
-        <button class="link-btn" type="button" data-go="login">Saltar</button>
+        <span></span>
       </div>
       <div class="progress" aria-hidden="true"><span class="dot"></span><span class="dot active"></span><span class="dot"></span></div>
       <div class="tutorial-visual">
@@ -93,14 +93,14 @@
       <h1 class="serif">3 acciones para hoy</h1>
       <p>No teor&iacute;a, no videos largos. Cada alerta te dice exactamente tres cosas que pod&eacute;s hacer en tu parcela.</p>
       <button class="btn" type="button" data-go="tutorial-3">Siguiente <svg class="icon"><use href="#i-arrow-right"></use></svg></button>
-      <button class="btn ghost" type="button" data-go="login">Omitir tutorial</button>
+      <button class="btn ghost" type="button" data-go="create-pin">Omitir tutorial</button>
     </section>
 
     <section id="tutorial-3" class="screen" data-screen>
       <div class="topbar">
         <button class="icon-btn" type="button" data-go="tutorial-2" aria-label="Volver"><svg class="icon"><use href="#i-arrow-left"></use></svg></button>
         <span class="center">3 de 3</span>
-        <button class="link-btn" type="button" data-go="login">Saltar</button>
+        <span></span>
       </div>
       <div class="progress" aria-hidden="true"><span class="dot"></span><span class="dot"></span><span class="dot active"></span></div>
       <div class="tutorial-visual">
@@ -110,65 +110,74 @@
       </div>
       <h1 class="serif">Alertas hasta sin internet</h1>
       <p>Si hay alerta amarilla o roja, abrimos tu app de mensajes con el SMS listo para enviar a contactos de confianza.</p>
-      <button class="btn" type="button" data-go="login">&iexcl;Comenzar!</button>
+      <button class="btn" type="button" data-go="create-pin">&iexcl;Comenzar!</button>
     </section>
 
-    <section id="login" class="screen" data-screen>
+    <section id="create-pin" class="screen" data-screen>
       <div class="brandbar">
         <span></span>
         <div class="row brand-id"><span class="avatar"><svg class="icon"><use href="#i-leaf"></use></svg></span><h2 class="serif" style="margin:0">CosechaClima</h2></div>
-        <button class="icon-btn" type="button" aria-label="Notificaciones"><svg class="icon"><use href="#i-bell"></use></svg></button>
+        <span></span>
       </div>
       <div class="stack lg" style="padding-top:46px">
-        <span class="avatar large" style="margin:auto"><svg class="icon xl"><use href="#i-message"></use></svg></span>
+        <span class="avatar large" style="margin:auto"><svg class="icon xl"><use href="#i-shield"></use></svg></span>
         <div>
-          <h1 class="serif" style="text-align:center">Ingresa tu n&uacute;mero</h1>
-          <p class="muted" style="text-align:center">Te enviaremos un c&oacute;digo de verificaci&oacute;n para activar tu parcela clim&aacute;tica.</p>
+          <h1 class="serif" style="text-align:center">Cre&aacute; tu PIN de seguridad</h1>
+          <p class="muted" style="text-align:center">Eleg&iacute; un PIN de 4 d&iacute;gitos para proteger tu parcela clim&aacute;tica. Se guarda cifrado solo en tu dispositivo.</p>
         </div>
         <label class="field">
-          <span class="label">Numero de telefono</span>
-          <input class="input" inputmode="tel" value="+505 8234-5678" aria-label="Numero de telefono">
+          <span class="label">Tu nombre</span>
+          <input class="input" type="text" placeholder="Ej: Carlos" aria-label="Tu nombre">
         </label>
-        <div class="card mint flat">
-          <div class="row" style="gap:12px">
-            <span class="avatar"><svg class="icon"><use href="#i-message"></use></svg></span>
-            <p style="margin:0">Recibir&aacute;s un SMS con c&oacute;digo de 4 n&uacute;meros. Puede aplicar cargo de tu operadora.</p>
+        <div>
+          <p class="label" style="margin-bottom:8px">Nuevo PIN de 4 d&iacute;gitos</p>
+          <div class="pin-row" aria-label="Nuevo PIN">
+            <span class="pin-box active"></span>
+            <span class="pin-box"></span>
+            <span class="pin-box"></span>
+            <span class="pin-box"></span>
           </div>
         </div>
-        <button class="btn" type="button" data-go="otp">Enviar c&oacute;digo SMS <svg class="icon"><use href="#i-arrow-right"></use></svg></button>
+        <div class="card mint flat">
+          <div class="row" style="gap:12px">
+            <span class="avatar"><svg class="icon"><use href="#i-shield"></use></svg></span>
+            <p style="margin:0">Tu PIN se almacena con cifrado SHA-256 en el dispositivo. Nunca se env&iacute;a a internet ni a servidores externos.</p>
+          </div>
+        </div>
+        <button class="btn" type="button" data-go="confirm-pin">Configurar PIN <svg class="icon"><use href="#i-arrow-right"></use></svg></button>
       </div>
     </section>
 
-    <section id="otp" class="screen" data-screen>
+    <section id="confirm-pin" class="screen" data-screen>
       <div class="topbar">
-        <button class="icon-btn" type="button" data-go="login" aria-label="Volver"><svg class="icon"><use href="#i-arrow-left"></use></svg></button>
+        <button class="icon-btn" type="button" data-go="create-pin" aria-label="Volver"><svg class="icon"><use href="#i-arrow-left"></use></svg></button>
         <span></span>
         <span></span>
       </div>
       <div class="stack lg" style="padding-top:40px">
-        <span class="avatar large" style="margin:auto"><svg class="icon xl"><use href="#i-phone"></use></svg></span>
+        <span class="avatar large" style="margin:auto"><svg class="icon xl"><use href="#i-shield"></use></svg></span>
         <div>
-          <h1 class="serif">Revis&aacute; tus mensajes</h1>
-          <p class="muted">Hemos enviado un c&oacute;digo de seguridad de 4 d&iacute;gitos al n&uacute;mero <span class="strong-green">+505 8234-5678</span>.</p>
+          <h1 class="serif" style="text-align:center">Confirm&aacute; tu PIN</h1>
+          <p class="muted" style="text-align:center">Volv&eacute; a ingresar los 4 d&iacute;gitos para confirmar.</p>
         </div>
-        <div class="pin-row" aria-label="Codigo de verificacion">
-          <span class="pin-box">4</span>
+        <div class="pin-row" aria-label="Confirmar PIN">
           <span class="pin-box active"></span>
+          <span class="pin-box"></span>
           <span class="pin-box"></span>
           <span class="pin-box"></span>
         </div>
         <div class="card flat" style="text-align:center">
-          <p class="small-note" style="margin-bottom:8px">&iquest;No recibiste el c&oacute;digo?</p>
-          <button class="link-btn" type="button">Reenviar c&oacute;digo</button>
+          <p class="small-note" style="margin-bottom:8px">&iquest;Los PIN no coinciden?</p>
+          <button class="link-btn" type="button" data-go="create-pin">Crear otro PIN</button>
         </div>
-        <button class="btn" type="button" data-go="crop">Confirmar <svg class="icon"><use href="#i-check"></use></svg></button>
-        <p class="small-note" style="text-align:center">Al confirmar, valid&aacute;s tu identidad para acceder a la red de monitoreo clim&aacute;tico.</p>
+        <button class="btn" type="button" data-go="crop">Confirmar PIN <svg class="icon"><use href="#i-check"></use></svg></button>
+        <p class="small-note" style="text-align:center">Al confirmar, activ&aacute;s tu parcela clim&aacute;tica con acceso protegido.</p>
       </div>
     </section>
 
     <section id="crop" class="screen" data-screen>
       <div class="brandbar">
-        <button class="icon-btn" type="button" data-go="otp" aria-label="Volver"><svg class="icon"><use href="#i-arrow-left"></use></svg></button>
+        <button class="icon-btn" type="button" data-go="confirm-pin" aria-label="Volver"><svg class="icon"><use href="#i-arrow-left"></use></svg></button>
         <h2 class="serif" style="margin:0">CosechaClima</h2>
         <span class="avatar" style="background:#eee6de"></span>
       </div>
@@ -350,7 +359,7 @@
       <div class="brandbar">
         <div class="row brand-id">
           <span class="avatar"><svg class="icon"><use href="#i-leaf"></use></svg></span>
-          <div><p class="eyebrow" style="margin:0">Buenos d&iacute;as,</p><h2 class="serif" style="margin:0">Carlos</h2></div>
+          <div><p class="eyebrow" style="margin:0">Buenos d&iacute;as,</p><h2 class="serif" style="margin:0" id="user-name-display">Agricultor</h2></div>
         </div>
         <button class="icon-btn soft" type="button" data-go="thresholds" aria-label="Ajustes"><svg class="icon"><use href="#i-settings"></use></svg></button>
       </div>
