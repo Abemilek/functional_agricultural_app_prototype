@@ -183,3 +183,5 @@ No requiere instalación, servidor ni dependencias.
 3. Navegar haciendo clic en botones.
 
 ---
+
+url del prototipo: https://functional-agricultural-app-prototype.netlify.app/
