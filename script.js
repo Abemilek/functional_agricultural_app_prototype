@@ -7,7 +7,7 @@
         const active = screen.id === id;
         screen.classList.toggle("active", active);
         screen.setAttribute("aria-hidden", String(!active));
-        if (active) screen.scrollTop = 0;
+        if (active) { screen.scrollTop = 0; shell.scrollTop = 0; }
       });
     }
 
@@ -20,6 +20,7 @@
       });
       const dashboard = document.querySelector("#dashboard");
       if (dashboard) dashboard.scrollTop = 0;
+      shell.scrollTop = 0;
     }
 
     document.addEventListener("click", (event) => {
@@ -84,4 +85,12 @@
     window.addEventListener("keydown", (event) => {
       if (event.key === "Escape") showScreen("splash");
     });
+
+    // Desktop detection: show mobile view centered on gray background
+    (function() {
+      const mql = window.matchMedia('(min-width: 1024px) and (pointer: fine)');
+      function update() { document.body.classList.toggle('desktop-mode', mql.matches); }
+      mql.addEventListener('change', update);
+      update();
+    })();
 

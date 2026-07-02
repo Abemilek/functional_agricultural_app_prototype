@@ -1123,3 +1123,85 @@
       }
     }
 
+    /* ===== DESKTOP MODE ===== */
+    body.desktop-mode {
+      background: #111;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      min-height: 100vh;
+    }
+
+    body.desktop-mode #app-shell {
+      max-width: 430px;
+      width: 100%;
+      max-height: 100vh;
+      overflow-y: auto;
+      border-radius: 28px;
+      box-shadow: 0 24px 64px rgba(0,0,0,0.45);
+      position: relative;
+    }
+
+    body.desktop-mode .splash.active {
+      display: flex;
+      flex-direction: column;
+      padding: 58px 30px 30px;
+    }
+
+    body.desktop-mode .splash-mark {
+      width: min(260px, 55vw);
+      max-width: 260px;
+      height: min(260px, 55vw);
+      max-height: 260px;
+    }
+
+    body.desktop-mode .shield {
+      width: min(190px, 70%);
+      max-width: 190px;
+      height: min(190px, 70%);
+      max-height: 190px;
+    }
+
+    body.desktop-mode .splash h1 {
+      font-size: 40px;
+    }
+
+    body.desktop-mode .splash-footer {
+      max-width: none;
+    }
+
+    body.desktop-mode .location-pill {
+      margin: 0 auto;
+    }
+
+    body.desktop-mode .dashboard .brandbar,
+    body.desktop-mode .dashboard .tab-panel {
+      max-width: none;
+      margin-left: 0;
+      margin-right: 0;
+    }
+
+    body.desktop-mode #tab-home.active {
+      grid-template-columns: none;
+    }
+
+    body.desktop-mode #tab-home.active .summary-card {
+      grid-row: auto;
+    }
+
+    body.desktop-mode #tab-home.active .source-grid {
+      grid-column: auto;
+    }
+
+    body.desktop-mode .bottom-nav {
+      position: sticky;
+      bottom: 0;
+      width: 100%;
+      transform: none;
+      border: none;
+      border-top: 1px solid #ebded3;
+      border-radius: 22px 22px 0 0;
+    }
+
