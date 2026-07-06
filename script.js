@@ -1,7 +1,34 @@
     const screens = Array.from(document.querySelectorAll("[data-screen]"));
     const shell = document.querySelector("#app-shell");
+    const STORAGE_KEY = 'cosechaclima_user';
     let userName = '';
     let pinDigits = { create: [], confirm: [] };
+
+    function saveToStorage() {
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify({
+          userName: userName,
+          pinDigits: pinDigits.create
+        }));
+      } catch (_) {}
+    }
+
+    function loadFromStorage() {
+      try {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        if (!raw) return false;
+        const data = JSON.parse(raw);
+        userName = data.userName || '';
+        pinDigits.create = Array.isArray(data.pinDigits) ? data.pinDigits : [];
+        return true;
+      } catch (_) {
+        return false;
+      }
+    }
+
+    function clearStorage() {
+      try { localStorage.removeItem(STORAGE_KEY); } catch (_) {}
+    }
 
     function resetPinRow(sectionId) {
       const section = document.getElementById(sectionId);
@@ -70,6 +97,7 @@
             if (pinDigits.confirm.length < 4 || pinDigits.confirm.some(d => d === undefined)) { showPinError('Completá los 4 dígitos de confirmación'); return; }
             if (JSON.stringify(pinDigits.create) !== JSON.stringify(pinDigits.confirm)) { showPinError('Los PIN no coinciden. Intentá de nuevo.'); return; }
             showPinError('');
+            saveToStorage();
             showScreen(target);
             return;
           }
@@ -188,6 +216,12 @@
         showPinError('');
       }
     });
+
+    if (loadFromStorage()) {
+      const dashName = document.querySelector('#user-name-display');
+      if (dashName) dashName.textContent = userName;
+      showScreen('crop');
+    }
 
     (function() {
       const mql = window.matchMedia('(min-width: 1024px) and (pointer: fine)');
