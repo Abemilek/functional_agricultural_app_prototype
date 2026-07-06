@@ -1,187 +1,154 @@
-# CosechaClima — Prototipo funcional
+# CosechaClima — Functional Prototype
 
-Prototipo navegable de alta fidelidad para validar flujo, interfaz y lógica antes del desarrollo en Flutter. Sirve como **especificación interactiva** del comportamiento esperado en la app Android final.
+High-fidelity, fully navigable HTML/CSS/JS prototype for an agricultural decision-support mobile application. Designed for **Nicaraguan smallholder farmers**, it simulates the complete user journey from onboarding to daily risk alerts based on crop, soil, weather, and personalized thresholds.
 
 ---
 
-## Flujo completo del prototipo
+## Quick Start
+
+No build tools, servers, or dependencies required.
+
+1. Open `index.html` in any modern browser.
+2. For mobile view: press `F12` → toggle device emulation → select **390×844** (iPhone 14 Pro) or similar.
+3. Navigate by clicking buttons and interactive elements throughout each screen.
+
+**Desktop mode**: when the viewport is ≥1024px with a fine-pointing device (mouse/trackpad), the prototype centers itself inside a 430px-wide phone mockup on a dark background for presentation on laptops and projectors.
+
+---
+
+## User Flow
 
 ```
-Splash → Tutorial (3 pasos) → Crear PIN → Confirmar PIN → Cultivo → Ubicación →
-Fecha de siembra → Tipo de suelo → Umbrales → Dashboard
-                                                      ├── Inicio (semáforo + 3 acciones)
-                                                      ├── Alertas (protocolo emergencia + SMS)
-                                                      └── Bitácora (historial)
+Splash → Tutorial (3 steps) → Create PIN → Confirm PIN → Crop → Location →
+Planting Date → Soil Type → Thresholds → Dashboard
+                                            ├── Home (traffic light + 3 actions)
+                                            ├── Alerts (emergency protocol + SMS)
+                                            └── Log (timeline history)
 ```
 
-### 1. Splash (`#splash`)
-Pantalla de bienvenida con marca, ubicación simulada (Carazo, Nicaragua) y botón "Comenzar".
-- **En Flutter**: Mostrar una sola vez en primera ejecución, luego ir directo a validación de PIN.
+---
 
-### 2. Tutorial (`#tutorial-1`, `#tutorial-2`, `#tutorial-3`)
-3 pantallas que explican: semáforo de riesgo, 3 acciones por alerta, alertas offline por SMS nativo.
-- Botón "Omitir tutorial" salta a Crear PIN.
-- **En Flutter**: Mostrar solo en primera ejecución. Almacenar flag en SharedPreferences.
+## Screen-by-Screen Walkthrough
 
-### 3. Crear PIN (`#create-pin`)
-El usuario ingresa su **nombre** y crea un **PIN de 4 dígitos**.
-- El nombre se usa para el saludo en el Dashboard ("Buenos días, [nombre]").
-- El PIN se almacena localmente con **hash SHA-256** (simulado en prototipo).
-- **No hay SMS, no hay número telefónico, no hay OTP**.
-- **En Flutter**:
-  ```dart
-  // Guardar PIN con hash al confirmar
-  final hash = sha256.convert(utf8.encode(pin)).toString();
-  await prefs.setString('user_pin_hash', hash);
-  await prefs.setString('user_name', nombre);
-  ```
+### 1. Splash
+Brand presentation with app name, tagline, and a "Start" button. Displays a simulated location (Carazo, Nicaragua) and the current agricultural cycle version.
 
-### 4. Confirmar PIN (`#confirm-pin`)
-El usuario repite los 4 dígitos para confirmar.
-- Botón "Crear otro PIN" regresa a la pantalla anterior.
-- **En Flutter**: Validar que ambos PIN coincidan antes de hash.
+### 2. Tutorial (3 steps)
+Three slides that introduce the app's core value propositions:
 
-### 5. Registro de cultivo (`#crop`)
-Selección visual: **Maíz** o **Frijol**.
-- Determina las fichas técnicas del INTA que aplican.
-- **En Flutter**: Guardar en SQLite como `cropType: 'maiz' | 'frijol'`.
+- **Step 1**: Daily traffic-light risk assessment (green / amber / red)
+- **Step 2**: Three concrete actions per alert — no lengthy videos, no theory
+- **Step 3**: Offline SMS alerts that work without internet connection
 
-### 6. Ubicación de parcela (`#location`)
-GPS detectado con confirmación manual de **Municipio**.
-- Opciones: Diriamba, Jinotepe, San Marcos, Dolores.
-- La coordenada se usa para consultar NASA POWER.
-- **En Flutter**: Obtener lat/lng real con `geolocator`, mapear a municipio.
+A "Skip tutorial" button is available on each slide.
 
-### 7. Fecha de siembra (`#date`)
-Selección de fecha relativa o exacta.
-- Opciones: "Esta semana", "Hace 2-3 semanas", "Hace más de un mes", o fecha exacta tipo `date`.
-- Determina la **etapa fenológica** calculada automáticamente.
-- **En Flutter**: Calcular etapa restando días desde hoy:
-  ```dart
-  enum Etapa { germinacion, plantula, desarrollo, floracion, llenado, maduracion }
-  Etapa calcularEtapa(DateTime siembra, String cultivo) { ... }
-  ```
+### 3. Create PIN
+The user enters their **name** and defines a **4-digit security PIN**.
 
-### 8. Tipo de suelo (`#soil`)
-Selección visual: **Franco**, **Arcilloso**, **Arenoso** o "No sé".
-- El tipo de suelo es la 4ª variable del motor de decisiones.
-- **En Flutter**: Guardar en SQLite como `soilType`.
+- The name personalizes the dashboard greeting ("Good morning, [name]").
+- The PIN is stored locally on the device only — no phone number, no SMS OTP, no remote server.
+- An info card explains that the PIN is encrypted with SHA-256 and never leaves the device.
 
-### 9. Umbrales (`#thresholds`)
-Configuración personalizada de 6 parámetros:
-| Parámetro | Rango | Default |
+### 4. Confirm PIN
+The user re-enters the 4-digit PIN to confirm it matches.
+
+- Validation ensures both PINs are identical and all 4 digits are filled.
+- A "Create another PIN" link allows starting over from the previous screen.
+
+### 5. Crop Selection
+Visual choice between the two main staple crops in Nicaragua: **Maize (Maíz)** and **Beans (Frijol)**.
+
+- The selected crop determines which technical guidelines apply for risk assessment.
+- An info note explains that maize and beans have different thresholds for drought, rain, and wind.
+
+### 6. Location
+Shows GPS-detected department (Carazo) and asks the user to select their **municipality** from four options: Diriamba, Jinotepe, San Marcos, or Dolores.
+
+- The municipality determines the hyperlocal weather data source (NASA POWER).
+- The GPS indicator is simulated in the prototype.
+
+### 7. Planting Date
+Relative or exact planting date selection:
+
+- Quick options: "This week", "2–3 weeks ago", "More than a month ago"
+- An exact date picker for precise input
+- The **phenological stage** (germination, growth, flowering, grain filling) is derived automatically from the date
+
+### 8. Soil Type
+Visual selection of soil type: **Loam**, **Clay**, **Sandy**, or "I don't know".
+
+- Soil type is one of the four core variables feeding the decision engine.
+- Each soil type modifies risk behavior (clay waterlogs, sand drains fast, loam is balanced).
+
+### 9. Thresholds
+Personalized configuration of six parameters:
+
+| Parameter | Range | Default |
 |---|---|---|
-| Lluvia intensa | 50–150 mm/24h | 100 mm/24h |
-| Viento fuerte | 20–60 km/h | 40 km/h |
-| Canícula | 5–15 días secos | 7 días |
-| Variedad | Criollo / Híbrido / Mejorado | Criollo |
-| Riego | Sí / No | No |
-| Horario SMS | 5:00–8:00 AM | 6:00 AM |
+| Heavy rain | 50–150 mm/24h | 100 mm/24h |
+| Strong wind | 20–60 km/h | 40 km/h |
+| Dry spell | 5–15 dry days | 7 days |
+| Crop variety | Criollo / Hybrid / Improved | Criollo |
+| Irrigation available | On / Off | Off |
+| SMS alert time | 5:00–8:00 AM | 6:00 AM |
 
-- **En Flutter**: Guardar en SQLite, cargar en el motor de decisiones.
+Users can accept the recommended values or adapt them to their own field experience.
 
-### 10. Dashboard (`#dashboard`)
-Pantalla principal con 3 tabs:
+### 10. Dashboard
+The main screen with three tabs:
 
-#### Tab Inicio
-- **Card resumen**: ubicación, nivel de riesgo (verde/amarillo/rojo), temperatura, clima, humedad, viento, lluvia.
-- **Alerta activa**: riesgo de paleo/antracnosis con descripción.
-- **3 acciones del día**: numeradas, con checkbox para marcar como completadas.
-- **Fuentes**: NASA POWER + INTA.
+#### Home Tab
+- **Summary card**: temperature, weather condition, humidity, wind, rainfall, location, and risk level (red in the prototype)
+- **Active alert**: a concrete risk scenario (e.g., paleo/anthracnose in beans) with description
+- **3 actions of the day**: numbered tasks with completion checkboxes
+- **Data sources**: NASA POWER (weather) and INTA (technical guidelines)
 
-#### Tab Alertas
-- **Protocolo de emergencia**: alerta roja con acciones prioritarias.
-- **Botón SMS**: abre el cliente nativo con mensaje preescrito:
-  ```
-  sms:?body=ALERTA%20CosechaClima%3A%20riesgo%20alto%20de%20paleo%20en%20frijol.%20...
-  ```
-- **Modo offline**: la alerta funciona sin internet.
+#### Alerts Tab
+- **Emergency protocol**: high-risk alert with prioritized actions
+- **SMS button**: opens the native messaging client with a pre-written alert message — no gateway, no cost
+- **Offline mode**: the alert works with cached data and the device's native SMS
 
-#### Tab Bitácora
-- Línea de tiempo con alertas anteriores y acciones completadas.
-- Cada entrada muestra: fecha, nivel de riesgo, evento, acciones tomadas.
-- Botón "Compartir historial".
+#### Log Tab
+- **Field log timeline**: past alerts and completed actions with date, risk level, and event description
+- **Share history** button for community reporting
 
 ---
 
-## Motor de decisiones (árbol de 90 reglas)
+## Decision Engine (90-rule simulation)
 
-El prototipo simula el motor. En Flutter debe implementarse como:
+The prototype simulates a closed decision tree that takes four variables as input:
 
-```dart
-String decidirAccion({
-  required String evento,    // lluvia_intensa | canicula | viento_fuerte | temp_extrema | helada
-  required String cultivo,   // maiz | frijol
-  required Etapa etapa,      // germinacion | plantula | desarrollo | floracion | llenado | maduracion
-  required String suelo,     // franco | arcilloso | arenoso
-  Map<String, int> umbrales, // configuración del usuario
-}) {
-  // Árbol if-else cerrado, 90 combinaciones posibles
-  // Retorna 3 acciones en lenguaje coloquial nicaragüense
-}
-```
+- **Weather event** (heavy rain, dry spell, strong wind, extreme temperature, frost)
+- **Crop type** (maize, beans)
+- **Phenological stage** (germination, seedling, development, flowering, filling, maturation)
+- **Soil type** (loam, clay, sandy)
 
-Las variables de entrada son exactamente 4 (5 eventos × 2 cultivos × 6 etapas × 3 suelos = 180 combinaciones, de las cuales ~90 son válidas según las fichas técnicas del INTA).
+These 4 variables × 5 events × 2 crops × 6 stages × 3 soils yield ~180 combinations, of which ~90 are agronomically valid according to INTA technical sheets. Each combination produces three actionable recommendations in colloquial Nicaraguan farming language.
 
 ---
 
-## Datos simulados vs. reales
+## Benefits & Rationale
 
-| Dato | Prototipo | Flutter real |
-|---|---|---|
-| Clima (temp, humedad, viento, lluvia) | Valores fijos | API NASA POWER (`GET /api/temporal/daily/point`) |
-| GPS | Simulado ("Carazo, Nicaragua") | `geolocator` + coordenadas reales |
-| Nivel de riesgo | Hardcodeado (rojo) | Calculado del motor de 90 reglas |
-| Acciones del día | Texto fijo | Generadas por el motor según 4 variables |
-| Bitácora | Entradas fijas | SQLite local con registro automático |
-| PIN | Visual (sin hash real) | SHA-256 + SharedPreferences |
-| SMS | `href="sms:..."` | `Intent(Intent.ACTION_SENDTO, Uri.parse("sms:"))` en Android |
+### Why a local PIN instead of cloud-based authentication?
 
----
+- Many farming areas in Nicaragua have limited or unreliable internet connectivity.
+- A PIN stored locally with SHA-256 eliminates dependency on remote servers, SMS gateways, or third-party authentication providers.
+- Zero recurring infrastructure cost for authentication.
 
-## Arquitectura objetivo (Flutter + C# + SQL Server)
+### Why SMS for critical alerts instead of push-only?
 
-```
-┌─────────────────────┐     ┌──────────────────┐     ┌───────────────┐
-│   Flutter App       │────▶│  ASP.NET Core    │────▶│  Azure SQL    │
-│  (Android 8.0+)     │◀────│  (Azure App Svc) │◀────│  Database     │
-│                     │     │                  │     │               │
-│  - PIN local (SHA)  │     │  - Motor 90 reg. │     │  - Usuarios   │
-│  - SQLite offline   │     │  - NASA POWER    │     │  - Parcelas   │
-│  - SMS native       │     │  - Alertas push  │     │  - Bitácora   │
-│  - FCM notif. push  │     │  - FCM sender    │     │  - Umbrales   │
-└─────────────────────┘     └──────────────────┘     └───────────────┘
-```
+- Push notifications require persistent internet connectivity and device-specific services (FCM).
+- Native SMS works on any mobile phone with cellular signal — no data plan required.
+- SMS is widely understood and trusted by farmers in the region.
+- Zero cost: the Android `ACTION_SENDTO` intent uses the built-in messaging app without any per-message fee.
 
-### Decisiones clave para la fase real
+### Why a 90-rule decision tree instead of ML/AI?
 
-1. **Autenticación**: PIN local con SHA-256. No hay login remoto, no hay SMS OTP, no hay Firebase Auth.
-   - El PIN nunca sale del dispositivo.
-   - Si el usuario olvida el PIN: opción "Restablecer" que borra datos locales y reinicia registro.
-
-2. **Datos offline**: SQLite local con caché de 5 días de pronóstico NASA POWER.
-   - Sincronización cuando haya conexión.
-
-3. **Alertas**: Canal dual:
-   - **Push**: Firebase Cloud Messaging (gratis, sin límite) para notificaciones normales.
-   - **SMS**: Intent nativo de Android (ACTION_SENDTO) solo para alertas ROJAS como respaldo.
-
-4. **Motor de decisiones**: Árbol cerrado en C# (API REST), con fallback local en SQLite
-   si no hay conexión al backend.
-
-5. **Costo mensual estimado**: ~USD 20 (Azure App Service B1 + SQL Basic).
-   Cero costo en SMS: el Intent nativo no tiene tarifa por mensaje.
+- A deterministic, auditable engine can be validated row-by-row by agronomists from INTA.
+- No training data, no model drift, no black-box decisions.
+- The rules are documented, explainable, and easy to update as new INTA technical sheets are published.
+- The closed tree fits entirely in device-local SQLite for offline operation.
 
 ---
 
-## Cómo ejecutar el prototipo
-
-No requiere instalación, servidor ni dependencias.
-
-1. Abrir `index.html` directamente en el navegador.
-2. Para vista móvil: F12 → modo dispositivo → seleccionar 390×844.
-3. Navegar haciendo clic en botones.
-
----
-
-url del prototipo: https://functional-agricultural-app-prototype.netlify.app/
+**URL**: https://functional-agricultural-app-prototype.netlify.app/
