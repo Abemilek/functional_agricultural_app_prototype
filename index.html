@@ -366,122 +366,124 @@
     </section>
 
     <section id="dashboard" class="screen dashboard" data-screen>
-      <div class="brandbar">
-        <div class="row brand-id">
-          <span class="avatar"><svg class="icon"><use href="#i-leaf"></use></svg></span>
-          <div><p class="eyebrow" style="margin:0">Buenos d&iacute;as,</p><h2 class="serif" style="margin:0" id="user-name-display">Agricultor</h2></div>
+      <div class="dashboard-content">
+        <div class="brandbar">
+          <div class="row brand-id">
+            <span class="avatar"><svg class="icon"><use href="#i-leaf"></use></svg></span>
+            <div><p class="eyebrow" style="margin:0">Buenos d&iacute;as,</p><h2 class="serif" style="margin:0" id="user-name-display">Agricultor</h2></div>
+          </div>
+          <button class="icon-btn soft" type="button" data-go="thresholds" aria-label="Ajustes"><svg class="icon"><use href="#i-settings"></use></svg></button>
         </div>
-        <button class="icon-btn soft" type="button" data-go="thresholds" aria-label="Ajustes"><svg class="icon"><use href="#i-settings"></use></svg></button>
-      </div>
 
-      <div id="tab-home" class="tab-panel active">
-        <article class="card summary-card">
-          <div class="split">
-            <span class="pill dark"><svg class="icon sm"><use href="#i-map-pin"></use></svg> Jinotepe, Carazo</span>
-            <span class="pill red">Nivel 3: critico</span>
-          </div>
-          <div class="weather-main">
-            <div><span class="temp">24</span><span style="font-size:20px;font-weight:800">&deg;C</span><h3 class="serif" style="margin:0">Parcialmente nublado</h3></div>
-            <svg class="icon xl"><use href="#i-cloud"></use></svg>
-          </div>
-          <div class="metric-row">
-            <div class="metric"><span>Humedad</span><strong>82%</strong></div>
-            <div class="metric"><span>Viento</span><strong>28 km/h</strong></div>
-            <div class="metric"><span>Lluvia</span><strong>86 mm</strong></div>
-          </div>
-        </article>
-
-        <article class="risk-card red">
-          <div class="risk-head">
-            <div>
-              <span class="pill red">Alerta activa</span>
-              <h2 class="serif" style="margin:10px 0 4px">Riesgo de paleo en frijol</h2>
-              <p style="margin:0">Lluvia acumulada en 48h + suelo arcilloso + etapa de desarrollo.</p>
+        <div id="tab-home" class="tab-panel active">
+          <article class="card summary-card">
+            <div class="split">
+              <span class="pill dark"><svg class="icon sm"><use href="#i-map-pin"></use></svg> Jinotepe, Carazo</span>
+              <span class="pill red">Nivel 3: critico</span>
             </div>
-            <span class="risk-badge"><svg class="icon lg"><use href="#i-alert"></use></svg></span>
+            <div class="weather-main">
+              <div><span class="temp">24</span><span style="font-size:20px;font-weight:800">&deg;C</span><h3 class="serif" style="margin:0">Parcialmente nublado</h3></div>
+              <svg class="icon xl"><use href="#i-cloud"></use></svg>
+            </div>
+            <div class="metric-row">
+              <div class="metric"><span>Humedad</span><strong>82%</strong></div>
+              <div class="metric"><span>Viento</span><strong>28 km/h</strong></div>
+              <div class="metric"><span>Lluvia</span><strong>86 mm</strong></div>
+            </div>
+          </article>
+
+          <article class="risk-card red">
+            <div class="risk-head">
+              <div>
+                <span class="pill red">Alerta activa</span>
+                <h2 class="serif" style="margin:10px 0 4px">Riesgo de paleo en frijol</h2>
+                <p style="margin:0">Lluvia acumulada en 48h + suelo arcilloso + etapa de desarrollo.</p>
+              </div>
+              <span class="risk-badge"><svg class="icon lg"><use href="#i-alert"></use></svg></span>
+            </div>
+          </article>
+
+          <div class="split">
+            <h2 class="serif" style="margin:0">Tus 3 acciones de hoy</h2>
+            <button class="link-btn" type="button" data-tab="alerts">Ver alerta</button>
           </div>
-        </article>
-
-        <div class="split">
-          <h2 class="serif" style="margin:0">Tus 3 acciones de hoy</h2>
-          <button class="link-btn" type="button" data-tab="alerts">Ver alerta</button>
-        </div>
-        <div class="actions">
-          <article class="action">
-            <span class="num">1</span>
-            <div><strong>Revis&aacute; drenajes del sector norte</strong><p class="muted" style="margin:4px 0 0">Abr&iacute; salida de agua antes de las 10:00 AM.</p></div>
-            <button class="check" type="button" data-complete aria-label="Completar accion"><svg class="icon sm"><use href="#i-check"></use></svg></button>
-          </article>
-          <article class="action">
-            <span class="num">2</span>
-            <div><strong>Aplic&aacute; fungicida preventivo</strong><p class="muted" style="margin:4px 0 0">Prioridad alta contra antracnosis (paleo).</p></div>
-            <button class="check" type="button" data-complete aria-label="Completar accion"><svg class="icon sm"><use href="#i-check"></use></svg></button>
-          </article>
-          <article class="action done">
-            <span class="num">3</span>
-            <div><strong>No regu&eacute;s hoy</strong><p class="muted" style="margin:4px 0 0">La humedad supera el umbral configurado.</p></div>
-            <button class="check" type="button" data-complete aria-label="Completar accion"><svg class="icon sm"><use href="#i-check"></use></svg></button>
-          </article>
-        </div>
-
-        <div class="source-grid">
-          <div class="source"><span class="pill"><svg class="icon sm"><use href="#i-cloud"></use></svg> NASA POWER</span><p class="small-note" style="margin:0">Precipitaci&oacute;n, viento, humedad y temperatura.</p></div>
-          <div class="source"><span class="pill"><svg class="icon sm"><use href="#i-book"></use></svg> INTA</span><p class="small-note" style="margin:0">Acciones basadas en fichas t&eacute;cnicas de ma&iacute;z y frijol.</p></div>
-        </div>
-      </div>
-
-      <div id="tab-alerts" class="tab-panel">
-        <div class="split">
-          <h1 class="serif" style="margin:0">Protocolo de emergencia</h1>
-          <span class="pill red">Roja</span>
-        </div>
-        <article class="card danger">
-          <div class="row" style="gap:14px">
-            <span class="risk-badge"><svg class="icon"><use href="#i-alert"></use></svg></span>
-            <div><h3>Tormenta fuerte + humedad alta</h3><p style="margin:0">Riesgo de hongos en frijol. Enviar alerta a contactos de confianza.</p></div>
+          <div class="actions">
+            <article class="action">
+              <span class="num">1</span>
+              <div><strong>Revis&aacute; drenajes del sector norte</strong><p class="muted" style="margin:4px 0 0">Abr&iacute; salida de agua antes de las 10:00 AM.</p></div>
+              <button class="check" type="button" data-complete aria-label="Completar accion"><svg class="icon sm"><use href="#i-check"></use></svg></button>
+            </article>
+            <article class="action">
+              <span class="num">2</span>
+              <div><strong>Aplic&aacute; fungicida preventivo</strong><p class="muted" style="margin:4px 0 0">Prioridad alta contra antracnosis (paleo).</p></div>
+              <button class="check" type="button" data-complete aria-label="Completar accion"><svg class="icon sm"><use href="#i-check"></use></svg></button>
+            </article>
+            <article class="action done">
+              <span class="num">3</span>
+              <div><strong>No regu&eacute;s hoy</strong><p class="muted" style="margin:4px 0 0">La humedad supera el umbral configurado.</p></div>
+              <button class="check" type="button" data-complete aria-label="Completar accion"><svg class="icon sm"><use href="#i-check"></use></svg></button>
+            </article>
           </div>
-        </article>
-        <div class="actions">
-          <article class="action"><span class="num">1</span><div><strong>Cierre de zanjas y drenajes</strong><p class="muted" style="margin:4px 0 0">Evite agua estancada junto al cultivo.</p></div><span></span></article>
-          <article class="action"><span class="num">2</span><div><strong>Revisi&oacute;n de hojas bajas</strong><p class="muted" style="margin:4px 0 0">Busque manchas oscuras o tallos blandos.</p></div><span></span></article>
-          <article class="action"><span class="num">3</span><div><strong>Aplicaci&oacute;n antes de lluvia</strong><p class="muted" style="margin:4px 0 0">Use producto recomendado por t&eacute;cnico local.</p></div><span></span></article>
-        </div>
-        <a class="btn red" href="sms:?body=ALERTA%20CosechaClima%3A%20riesgo%20alto%20de%20paleo%20en%20frijol.%201%29%20Revise%20drenajes.%202%29%20Aplique%20fungicida%20preventivo.%203%29%20No%20riegue%20hoy.">
-          Preparar SMS <svg class="icon"><use href="#i-message"></use></svg>
-        </a>
-        <article class="card mint flat">
-          <strong>Modo offline</strong>
-          <p style="margin:8px 0 0">La alerta usa datos cacheados y el SMS nativo del tel&eacute;fono. No requiere pasarela de pago.</p>
-        </article>
-      </div>
 
-      <div id="tab-log" class="tab-panel">
-        <div class="split">
-          <h1 class="serif" style="margin:0">Bit&aacute;cora de campo</h1>
-          <span class="pill"><svg class="icon sm"><use href="#i-list"></use></svg>Filtrar</span>
+          <div class="source-grid">
+            <div class="source"><span class="pill"><svg class="icon sm"><use href="#i-cloud"></use></svg> NASA POWER</span><p class="small-note" style="margin:0">Precipitaci&oacute;n, viento, humedad y temperatura.</p></div>
+            <div class="source"><span class="pill"><svg class="icon sm"><use href="#i-book"></use></svg> INTA</span><p class="small-note" style="margin:0">Acciones basadas en fichas t&eacute;cnicas de ma&iacute;z y frijol.</p></div>
+          </div>
         </div>
-        <div class="timeline">
-          <article class="timeline-item red">
-            <span class="pill red">Riesgo alto</span>
-            <h3>Alerta de paleo/antracnosis</h3>
-            <p class="muted" style="margin:0">12 Jun, 8:30 AM - Frijol, suelo arcilloso. 2 de 3 acciones completadas.</p>
+
+        <div id="tab-alerts" class="tab-panel">
+          <div class="split">
+            <h1 class="serif" style="margin:0">Protocolo de emergencia</h1>
+            <span class="pill red">Roja</span>
+          </div>
+          <article class="card danger">
+            <div class="row" style="gap:14px">
+              <span class="risk-badge"><svg class="icon"><use href="#i-alert"></use></svg></span>
+              <div><h3>Tormenta fuerte + humedad alta</h3><p style="margin:0">Riesgo de hongos en frijol. Enviar alerta a contactos de confianza.</p></div>
+            </div>
           </article>
-          <article class="timeline-item amber">
-            <span class="pill warn">Advertencia</span>
-            <h3>Can&iacute;cula moderada</h3>
-            <p class="muted" style="margin:0">8 Jun, 6:00 AM - Se recomend&oacute; riego temprano y cobertura de suelo.</p>
-          </article>
-          <article class="timeline-item">
-            <span class="pill">Estable</span>
-            <h3>Cosecha de muestra exitosa</h3>
-            <p class="muted" style="margin:0">2 Jun, 9:00 AM - Condiciones dentro de umbral configurado.</p>
+          <div class="actions">
+            <article class="action"><span class="num">1</span><div><strong>Cierre de zanjas y drenajes</strong><p class="muted" style="margin:4px 0 0">Evite agua estancada junto al cultivo.</p></div><span></span></article>
+            <article class="action"><span class="num">2</span><div><strong>Revisi&oacute;n de hojas bajas</strong><p class="muted" style="margin:4px 0 0">Busque manchas oscuras o tallos blandos.</p></div><span></span></article>
+            <article class="action"><span class="num">3</span><div><strong>Aplicaci&oacute;n antes de lluvia</strong><p class="muted" style="margin:4px 0 0">Use producto recomendado por t&eacute;cnico local.</p></div><span></span></article>
+          </div>
+          <a class="btn red" href="sms:?body=ALERTA%20CosechaClima%3A%20riesgo%20alto%20de%20paleo%20en%20frijol.%201%29%20Revise%20drenajes.%202%29%20Aplique%20fungicida%20preventivo.%203%29%20No%20riegue%20hoy.">
+            Preparar SMS <svg class="icon"><use href="#i-message"></use></svg>
+          </a>
+          <article class="card mint flat">
+            <strong>Modo offline</strong>
+            <p style="margin:8px 0 0">La alerta usa datos cacheados y el SMS nativo del tel&eacute;fono. No requiere pasarela de pago.</p>
           </article>
         </div>
-        <article class="card warning flat">
-          <strong>Reporte comunitario - Fase 2</strong>
-          <p style="margin:8px 0 0">Mockup para notificar plagas o anomal&iacute;as con municipio, s&iacute;ntomas y georreferenciaci&oacute;n.</p>
-        </article>
-        <button class="btn secondary" type="button"><svg class="icon"><use href="#i-book"></use></svg> Compartir historial</button>
+
+        <div id="tab-log" class="tab-panel">
+          <div class="split">
+            <h1 class="serif" style="margin:0">Bit&aacute;cora de campo</h1>
+            <span class="pill"><svg class="icon sm"><use href="#i-list"></use></svg>Filtrar</span>
+          </div>
+          <div class="timeline">
+            <article class="timeline-item red">
+              <span class="pill red">Riesgo alto</span>
+              <h3>Alerta de paleo/antracnosis</h3>
+              <p class="muted" style="margin:0">12 Jun, 8:30 AM - Frijol, suelo arcilloso. 2 de 3 acciones completadas.</p>
+            </article>
+            <article class="timeline-item amber">
+              <span class="pill warn">Advertencia</span>
+              <h3>Can&iacute;cula moderada</h3>
+              <p class="muted" style="margin:0">8 Jun, 6:00 AM - Se recomend&oacute; riego temprano y cobertura de suelo.</p>
+            </article>
+            <article class="timeline-item">
+              <span class="pill">Estable</span>
+              <h3>Cosecha de muestra exitosa</h3>
+              <p class="muted" style="margin:0">2 Jun, 9:00 AM - Condiciones dentro de umbral configurado.</p>
+            </article>
+          </div>
+          <article class="card warning flat">
+            <strong>Reporte comunitario - Fase 2</strong>
+            <p style="margin:8px 0 0">Mockup para notificar plagas o anomal&iacute;as con municipio, s&iacute;ntomas y georreferenciaci&oacute;n.</p>
+          </article>
+          <button class="btn secondary" type="button"><svg class="icon"><use href="#i-book"></use></svg> Compartir historial</button>
+        </div>
       </div>
 
       <nav class="bottom-nav" aria-label="Navegacion principal">
