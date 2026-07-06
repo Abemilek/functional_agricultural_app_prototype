@@ -585,14 +585,32 @@
     }
 
     .pin-box {
+      width: 100%;
+      min-width: 0;
       height: 64px;
       border: 1px solid #e6d8ca;
       border-radius: 14px;
       background: #fffaf4;
-      display: grid;
-      place-items: center;
       font-size: 24px;
       font-weight: 900;
+      text-align: center;
+      outline: 0;
+      padding: 0;
+      font-family: inherit;
+      caret-color: transparent;
+      -moz-appearance: textfield;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+
+    .pin-box::-webkit-outer-spin-button,
+    .pin-box::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+
+    .pin-box::selection {
+      background: transparent;
     }
 
     .pin-box.active {
