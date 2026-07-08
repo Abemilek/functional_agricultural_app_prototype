@@ -1,0 +1,45 @@
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  min-height: 32px;
+  padding: 7px 12px;
+  border-radius: 999px;
+  background: rgba(0, 116, 55, 0.1);
+  color: var(--green-dark);
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.pill.warn {
+  background: var(--amber-bg);
+  color: #a56800;
+}
+
+.pill.red {
+  background: var(--red-bg);
+  color: #b01111;
+}
+
+.pill.dark {
+  background: rgba(255, 255, 255, 0.14);
+  color: #fff;
+}
+
+.progress {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.dot {
+  width: 10px;
+  height: 8px;
+  border-radius: 999px;
+  background: #ded7cf;
+}
+
+.dot.active {
+  width: 32px;
+  background: var(--green);
+}

@@ -1,0 +1,21 @@
+.avatar {
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--mint-2);
+  color: var(--green-dark);
+  border: 2px solid rgba(0, 116, 55, 0.18);
+  flex: 0 0 auto;
+}
+
+.avatar.large {
+  width: 72px;
+  height: 72px;
+}
+
+.avatar.soil {
+  background: #eee0d2;
+  color: var(--soil);
+}

@@ -1,0 +1,99 @@
+.tutorial-visual {
+  min-height: 330px;
+  display: grid;
+  place-items: center;
+  margin: 18px 0 24px;
+  border-radius: 34px;
+  background: linear-gradient(180deg, #fffaf5 0%, #f7eee4 100%);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.phone-card {
+  width: 215px;
+  min-height: 288px;
+  border: 7px solid #d8b68d;
+  border-radius: 38px;
+  background: #fffaf4;
+  padding: 24px 20px;
+  box-shadow: 0 18px 40px rgba(76, 51, 24, 0.12);
+}
+
+.semaforo {
+  display: grid;
+  gap: 14px;
+  place-items: center;
+}
+
+.signal-dot {
+  width: 58px;
+  height: 58px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: #f4efe9;
+  color: #ceb58e;
+}
+
+.signal-dot.red {
+  background: #ffd9d6;
+  color: var(--red);
+}
+
+.signal-dot.amber {
+  background: var(--amber-bg);
+  color: var(--amber);
+}
+
+.signal-dot.green {
+  background: var(--mint-2);
+  color: var(--green-dark);
+  box-shadow: 0 0 0 8px rgba(0, 116, 55, 0.08);
+}
+
+.action-preview {
+  display: grid;
+  gap: 12px;
+  width: 100%;
+}
+
+.action-preview .line {
+  height: 48px;
+  border-radius: 14px;
+  background: #fff;
+  box-shadow: var(--shadow-soft);
+}
+
+.crop-phone {
+  width: 212px;
+  min-height: 300px;
+  display: grid;
+  place-items: center;
+  border: 5px solid #d9bb96;
+  border-radius: 36px;
+  background: #fffaf4;
+  color: var(--green);
+}
+
+.message-bubble {
+  width: 124px;
+  height: 124px;
+  display: grid;
+  place-items: center;
+  border-radius: 22px;
+  background: var(--mint-2);
+  color: var(--green-dark);
+  position: relative;
+}
+
+.message-bubble::after {
+  content: "";
+  position: absolute;
+  right: 16px;
+  top: 16px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--red);
+  box-shadow: 0 0 0 4px #fffaf4;
+}

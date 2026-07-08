@@ -1,0 +1,23 @@
+:root {
+  --cream: #fbf4ec;
+  --paper: #fffaf4;
+  --paper-2: #f6eadf;
+  --ink: #241d18;
+  --muted: #6d6259;
+  --soft: #e8ddd2;
+  --green: #007437;
+  --green-2: #0a8a46;
+  --green-dark: #005c2c;
+  --mint: #eaf8eb;
+  --mint-2: #bceec8;
+  --amber: #f4a000;
+  --amber-bg: #fff6d7;
+  --red: #db2c2c;
+  --red-bg: #ffe5e1;
+  --soil: #5e432d;
+  --blue: #2867a5;
+  --shadow: 0 16px 34px rgba(45, 33, 21, 0.14);
+  --shadow-soft: 0 8px 20px rgba(45, 33, 21, 0.09);
+  --radius: 22px;
+  color-scheme: light;
+}

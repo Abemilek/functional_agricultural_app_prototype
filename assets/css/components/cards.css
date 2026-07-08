@@ -1,0 +1,200 @@
+.card {
+  border: 1px solid rgba(111, 82, 57, 0.11);
+  border-radius: var(--radius);
+  padding: 18px;
+  background: var(--paper);
+  box-shadow: var(--shadow-soft);
+}
+
+.card.flat {
+  box-shadow: none;
+}
+
+.card.green {
+  color: #fff;
+  background: var(--green);
+  border: 0;
+}
+
+.card.mint {
+  background: var(--mint);
+  border-color: #bfe8c7;
+}
+
+.card.warning {
+  background: var(--amber-bg);
+  border-color: #f3d272;
+}
+
+.card.danger {
+  background: var(--red-bg);
+  border-color: #f0aaa4;
+}
+
+.slider-card {
+  display: grid;
+  gap: 10px;
+  padding: 14px;
+  border: 1px solid #e8d8c8;
+  border-radius: 16px;
+  background: var(--paper);
+}
+
+.slider-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  font-weight: 800;
+}
+
+input[type="range"] {
+  width: 100%;
+  accent-color: var(--green);
+}
+
+.toggle-card {
+  min-height: 66px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 14px;
+  border: 1px solid #e8d8c8;
+  border-radius: 16px;
+  background: var(--paper);
+}
+
+.switch {
+  position: relative;
+  width: 54px;
+  height: 32px;
+  border-radius: 999px;
+  background: #d9cfc4;
+  flex: 0 0 auto;
+}
+
+.switch::after {
+  content: "";
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  transition: transform 0.18s ease;
+}
+
+.switch.on {
+  background: var(--green);
+}
+
+.switch.on::after {
+  transform: translateX(22px);
+}
+
+.risk-card {
+  display: grid;
+  gap: 14px;
+  border-radius: var(--radius);
+  padding: 18px;
+  background: var(--amber-bg);
+  border: 1px solid #f0cf71;
+}
+
+.risk-card.red {
+  background: var(--red-bg);
+  border-color: #eca39e;
+}
+
+.risk-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: center;
+}
+
+.risk-badge {
+  width: 54px;
+  height: 54px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--amber);
+  color: #fff;
+  flex: 0 0 auto;
+}
+
+.risk-card.red .risk-badge {
+  background: var(--red);
+}
+
+.summary-card {
+  position: relative;
+  overflow: hidden;
+  padding: 22px;
+  background: var(--green);
+  color: #fff;
+}
+
+.summary-card::after {
+  content: "";
+  position: absolute;
+  right: -40px;
+  bottom: -55px;
+  width: 170px;
+  height: 170px;
+  border-radius: 38px;
+  border: 18px solid rgba(255, 255, 255, 0.08);
+  transform: rotate(18deg);
+}
+
+.map-card {
+  min-height: 250px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 26px;
+  background: #d8d0c5;
+  box-shadow: inset 0 -40px 70px rgba(64, 50, 38, 0.18);
+}
+
+.map-card::before {
+  content: "";
+  position: absolute;
+  inset: 20px 38px 52px;
+  border-radius: 40% 60% 44% 56%;
+  background: #b7d9b8;
+  box-shadow: 45px 42px 0 #c5e3c5, -24px 78px 0 #abcfae;
+  opacity: 0.8;
+}
+
+.map-pin {
+  position: absolute;
+  left: 44%;
+  top: 42%;
+  width: 58px;
+  height: 58px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--green);
+  color: #fff;
+  box-shadow: 0 8px 22px rgba(0, 95, 44, 0.28);
+}
+
+.map-confirm {
+  position: absolute;
+  right: 14px;
+  bottom: 14px;
+  left: 14px;
+  min-height: 46px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border-radius: 14px;
+  background: #fff;
+  color: var(--ink);
+  font-weight: 800;
+}

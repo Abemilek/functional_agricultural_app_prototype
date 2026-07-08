@@ -1,0 +1,65 @@
+.topbar,
+.brandbar,
+.row,
+.split,
+.nav-row {
+  display: flex;
+  align-items: center;
+}
+
+.topbar {
+  justify-content: space-between;
+  min-height: 44px;
+  margin-bottom: 16px;
+  color: var(--green-dark);
+  font-weight: 700;
+}
+
+.topbar .center {
+  color: var(--ink);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.brandbar {
+  justify-content: space-between;
+  margin-bottom: 18px;
+}
+
+.brand-id {
+  gap: 10px;
+}
+
+.bottom-nav {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  padding: 10px 22px 18px;
+  background: rgba(255, 250, 244, 0.96);
+  border-top: 1px solid #ebded3;
+  backdrop-filter: blur(8px);
+  z-index: 5;
+}
+
+.nav-item {
+  min-height: 58px;
+  display: grid;
+  place-items: center;
+  gap: 2px;
+  border: 0;
+  border-radius: 16px;
+  background: transparent;
+  color: #403831;
+  font-size: 12px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.nav-item.active {
+  background: var(--mint-2);
+  color: var(--green-dark);
+}

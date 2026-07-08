@@ -1,0 +1,76 @@
+.splash {
+  position: relative;
+  display: none;
+  color: #fff;
+  background: var(--green-dark);
+}
+
+.splash.active {
+  display: flex;
+  flex-direction: column;
+  padding: 58px 30px 30px;
+}
+
+.splash.active > div:first-child {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.splash h1 {
+  margin: 22px 0 14px;
+  font-size: 40px;
+}
+
+.splash p {
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 18px;
+  text-align: center;
+  max-width: 340px;
+}
+
+.splash-mark {
+  width: min(260px, 55vw);
+  height: min(260px, 55vw);
+  max-width: 260px;
+  max-height: 260px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 30px;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.shield {
+  width: min(190px, 70%);
+  height: min(190px, 70%);
+  max-width: 190px;
+  max-height: 190px;
+  color: #b9f3c4;
+}
+
+.splash-footer {
+  display: grid;
+  gap: 18px;
+}
+
+.location-pill {
+  width: fit-content;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 auto;
+  padding: 11px 16px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+}
+
+.version {
+  margin: 18px 0 0;
+  color: rgba(255, 255, 255, 0.58);
+  font-size: 13px;
+  text-align: center;
+}

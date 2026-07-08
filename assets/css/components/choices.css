@@ -1,0 +1,63 @@
+.choice-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.choice {
+  min-height: 138px;
+  display: grid;
+  align-content: center;
+  gap: 12px;
+  border: 1px solid #efe0d3;
+  border-radius: 18px;
+  padding: 16px;
+  background: var(--paper);
+  color: var(--ink);
+  text-align: left;
+  box-shadow: var(--shadow-soft);
+  cursor: pointer;
+}
+
+.choice.selected,
+.choice[aria-pressed="true"] {
+  border: 2px solid var(--green);
+  background: #edf8ed;
+}
+
+.choice .avatar {
+  margin: 0 auto 2px;
+}
+
+.choice strong {
+  display: block;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 22px;
+  line-height: 1.05;
+  text-align: center;
+}
+
+.choice span {
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.choice.full {
+  grid-column: 1 / -1;
+  min-height: 96px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.choice.full strong,
+.choice.full span {
+  text-align: left;
+}
+
+.municipio {
+  min-height: 116px;
+  align-content: start;
+}

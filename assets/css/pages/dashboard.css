@@ -1,0 +1,124 @@
+.weather-main {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin: 18px 0;
+}
+
+.weather-main .temp {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 42px;
+  font-weight: 900;
+}
+
+.metric-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  border-top: 1px solid rgba(255, 255, 255, 0.28);
+  padding-top: 12px;
+}
+
+.metric {
+  text-align: center;
+}
+
+.metric strong {
+  display: block;
+  font-size: 17px;
+}
+
+.metric span {
+  color: rgba(255, 255, 255, 0.68);
+  font-size: 11px;
+  text-transform: uppercase;
+}
+
+.actions {
+  display: grid;
+  gap: 12px;
+}
+
+.action {
+  display: grid;
+  grid-template-columns: 34px 1fr auto;
+  align-items: center;
+  gap: 12px;
+  min-height: 82px;
+  padding: 14px;
+  border: 1px solid #eadccf;
+  border-radius: 18px;
+  background: var(--paper);
+  box-shadow: var(--shadow-soft);
+}
+
+.action .num {
+  width: 30px;
+  height: 30px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: #ffdcd8;
+  color: var(--red);
+  font-weight: 900;
+}
+
+.action.done {
+  background: #eef8ed;
+}
+
+.action.done strong {
+  text-decoration: line-through;
+  color: var(--muted);
+}
+
+.source-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.source {
+  min-height: 96px;
+  display: grid;
+  gap: 8px;
+  padding: 14px;
+  border-radius: 16px;
+  background: var(--paper);
+  border: 1px solid #e8d8c8;
+}
+
+.tab-panel {
+  display: none;
+}
+
+.tab-panel.active {
+  display: grid;
+  gap: 16px;
+}
+
+.timeline {
+  display: grid;
+  gap: 14px;
+  position: relative;
+}
+
+.timeline-item {
+  position: relative;
+  display: grid;
+  gap: 8px;
+  padding: 16px 16px 16px 20px;
+  border-left: 4px solid var(--green);
+  border-radius: 16px;
+  background: var(--paper);
+  box-shadow: var(--shadow-soft);
+}
+
+.timeline-item.red {
+  border-left-color: var(--red);
+}
+
+.timeline-item.amber {
+  border-left-color: var(--amber);
+}
